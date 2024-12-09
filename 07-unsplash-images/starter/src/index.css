@@ -61,13 +61,27 @@ html {
   --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   /* dark mode setup */
+  --backgroundColor:var(var(--grey-50));
+  --textColor : var(var(--grey-900));
+  --dark-mode-text-color:#f0f0f0;
+  --dark-mode-bg-color:#333;
+  --darkModeTransition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.dark-theme {
+  background: var(--dark-mode-bg-color);
+  color: var(--dark-mode-text-color);
 }
 
 body {
+  background: var(--backgroundColor);
+  color: var(--textColor);
+  transition: var(--darkModeTransition);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 400;
   line-height: 1;
+  height: 100%;
 }
 p {
   margin: 0;
@@ -136,7 +150,9 @@ small,
 .text-small {
   font-size: var(--small-text);
 }
-
+.white{
+  color: white;
+}
 a {
   text-decoration: none;
 }

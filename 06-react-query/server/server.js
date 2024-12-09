@@ -11,6 +11,7 @@ let taskList = [
   { id: nanoid(), title: 'take a nap', isDone: false },
 ];
 
+
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
@@ -45,6 +46,7 @@ app.patch('/api/tasks/:id', (req, res) => {
     if (task.id === id) {
       return { ...task, isDone };
     }
+    // console.log("done")
     return task;
   });
 

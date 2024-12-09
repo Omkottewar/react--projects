@@ -1,10 +1,20 @@
+import { hashQueryKey, useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+import customFetch from "./utils";
+import { useDeleteTask, useUpdateTask } from "./ReactQueryHooks";
+
 const SingleItem = ({ item }) => {
+
+  const {updateTask} = useUpdateTask();
+  const {deleteTask,DeleteDataIsLoading} = useDeleteTask();
+
+
   return (
     <div className='single-item'>
       <input
         type='checkbox'
         checked={item.isDone}
-        onChange={() => console.log('edit task')}
+        onChange={() => updateTask({taskId:item.id,isDone: !item.isDone})}
       />
       <p
         style={{
@@ -17,7 +27,8 @@ const SingleItem = ({ item }) => {
       <button
         className='btn remove-btn'
         type='button'
-        onClick={() => console.log('delete task')}
+        disabled={DeleteDataIsLoading}
+        onClick={() => deleteTask({taskId:item.id})}
       >
         delete
       </button>
